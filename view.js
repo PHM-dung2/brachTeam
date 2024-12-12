@@ -1,9 +1,11 @@
-let postArray = ["게시물1 제목 , 게시물1 내용 , 1234 , 2024-11-25 , 3",
-                "게시물2 제목 , 게시물2 내용 , 5678 , 2024-11-26 , 2",
-                "게시물3 제목 , 게시물3 내용 , 1478 , 2024-11-27 , 0"];
-
-    function postTitleInput( i ){ // i : 매개변수 , 상세 출력할 배열의
-        console.log('상세출력함수 실행'); console.log( i );
+// let postArray = ["게시물1 제목 , 게시물1 내용 , 1234 , 2024-11-25 , 3",
+//                 "게시물2 제목 , 게시물2 내용 , 5678 , 2024-11-26 , 2",
+//                 "게시물3 제목 , 게시물3 내용 , 1478 , 2024-11-27 , 0"];
+function postTitleInput( i ){ // i : 매개변수 , 상세 출력할 배열의
+    console.log('상세출력함수 실행'); console.log( i );
+    
+    let postArray = retrunFunc();
+        
         // 1. 어디에 , document.querySelector()
         // 2. 무엇을 , 배열 정보를 HTML 로 구성 , 선택한 게시물 인덱스의 정보를 , index
         let board = postArray[i]
@@ -27,6 +29,8 @@ let postArray = ["게시물1 제목 , 게시물1 내용 , 1234 , 2024-11-25 , 3"
     // [4] 삭제함수 , 실행조건 : [삭제]버튼 클릭시
     function postDeleteFunc( i ){   
         console.log('삭제함수 실행')
+
+        let postArray = retrunFunc();
         // 1. 배열내 특정한 인덱스 의 요소 제거 , 배열변수명.splice( 삭제할 인덱스 , 개수 )
         let board = postArray[i];
         let info = board.split(',');
@@ -40,6 +44,8 @@ let postArray = ["게시물1 제목 , 게시물1 내용 , 1234 , 2024-11-25 , 3"
     // [5] 수정함수 , 실행조건 : [수정]버튼 클릭시
     function postEditFunc( i ){ console.log('등록함수 실행')
         console.log('수정함수 실행')
+
+        let postArray = retrunFunc();
         // 1. 배열내 특정한 인덱스 의 요소 제거 , 배열변수명.splice( 삭제할 인덱스 , 개수 )
         let board = postArray[i];
         let info = board.split(',');
@@ -53,3 +59,15 @@ let postArray = ["게시물1 제목 , 게시물1 내용 , 1234 , 2024-11-25 , 3"
         postListFunc();
         postTitleInput( i );
     } // f end ,
+
+    function retrunFunc(){
+        let postArray = localStorage.getItem('postArray')
+        if( postArray == null ){
+            postArray = [];
+        }else{
+            postArray = JSON.parse( postArray );
+        }
+        console.log(postArray);
+    
+        return postArray;
+    }
