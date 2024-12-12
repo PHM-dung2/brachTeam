@@ -12,8 +12,7 @@ function postListFunc(){  console.log('등록함수 실행')
     let tbody = document.querySelector( 'table > tbody' )
     // (2) 무엇읏 , 배열 요소들의 정보를 html 구성해서
     html = '';
-    let i = 0;
-    for( i = 0 ; i < postArray.length ; i++){
+    for( let i = 0 ; i < postArray.length ; i++){
         // index는 0부터 마지막인덱스까지 1씩 증가 반복
         let board = postArray[i]; // 하나의 게시물
         // 하나의 게시물을 csv 구성 했기 때문에 게시물 정보 분해 
@@ -24,11 +23,11 @@ function postListFunc(){  console.log('등록함수 실행')
                     <td><a href="view.html" onclick="postTitleInput(${i})">${ info[0] }<a></td>
                     <td>${ info[4] }</td>
                 </tr>`
-        console.log( html )
+        iList = i ;
+        localStorage.setItem( 'iList' , JSON.stringify( iList ));
+        console.log( i )
     } // for end
 
-    iList.push(i);
-    localStorage.setItem( 'iList' , JSON.stringify( iList ));
 
     // (3) 출력 , .innerHTML
     tbody.innerHTML = html;
@@ -49,7 +48,7 @@ function retrunFunc(){
 function iFunc(){
     let iList = localStorage.getItem('postArray')
     if( iList == null ){
-        iList = [];
+        iList = '';
     }else{
         iList = JSON.parse( iList );
     }

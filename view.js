@@ -1,11 +1,15 @@
 // let postArray = ["게시물1 제목 , 게시물1 내용 , 1234 , 2024-11-25 , 3",
 //                 "게시물2 제목 , 게시물2 내용 , 5678 , 2024-11-26 , 2",
 //                 "게시물3 제목 , 게시물3 내용 , 1478 , 2024-11-27 , 0"];
-function postTitleInput( i ){ // i : 매개변수 , 상세 출력할 배열의
-    console.log('상세출력함수 실행'); console.log( i );
+
+
+function postTitleInput( ){ // i : 매개변수 , 상세 출력할 배열의
+    console.log('상세출력함수 실행'); 
     
-    let postArray = retrunFunc();
-    let iList = iFunc();
+        let postArray = retrunFunc();
+        let iList = iFunc();
+
+        let i = iList
         
         // 1. 어디에 , document.querySelector()
         // 2. 무엇을 , 배열 정보를 HTML 로 구성 , 선택한 게시물 인덱스의 정보를 , index
@@ -76,7 +80,7 @@ function postTitleInput( i ){ // i : 매개변수 , 상세 출력할 배열의
     function iFunc(){
         let iList = localStorage.getItem('postArray')
         if( iList == null ){
-            iList = [];
+            iList = '';
         }else{
             iList = JSON.parse( iList );
         }
