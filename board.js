@@ -7,10 +7,12 @@ postListFunc();
 function postListFunc(){  console.log('등록함수 실행')
 
     let postArray = retrunFunc();
+    let iList = iFunc();
     // (1) 어디에 , table > tbody , document.querySelector(선택자)
     let tbody = document.querySelector( 'table > tbody' )
     // (2) 무엇읏 , 배열 요소들의 정보를 html 구성해서
     html = '';
+    let i = 0;
     for( i = 0 ; i < postArray.length ; i++){
         // index는 0부터 마지막인덱스까지 1씩 증가 반복
         let board = postArray[i]; // 하나의 게시물
@@ -24,6 +26,10 @@ function postListFunc(){  console.log('등록함수 실행')
                 </tr>`
         console.log( html )
     } // for end
+
+    iList.push(i);
+    localStorage.iList( 'iList' , JSON.stringify( iList ))
+
     // (3) 출력 , .innerHTML
     tbody.innerHTML = html;
 } // f end
@@ -38,4 +44,16 @@ function retrunFunc(){
     console.log(postArray);
 
     return postArray;
+}
+
+function iFunc(){
+    let iList = localStorage.getItem('postArray')
+    if( iList == null ){
+        iList = [];
+    }else{
+        iList = JSON.parse( iList );
+    }
+    console.log(iList);
+
+    return iList;
 }

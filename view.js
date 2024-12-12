@@ -5,6 +5,7 @@ function postTitleInput( i ){ // i : 매개변수 , 상세 출력할 배열의
     console.log('상세출력함수 실행'); console.log( i );
     
     let postArray = retrunFunc();
+    let iList = iFunc();
         
         // 1. 어디에 , document.querySelector()
         // 2. 무엇을 , 배열 정보를 HTML 로 구성 , 선택한 게시물 인덱스의 정보를 , index
@@ -70,4 +71,16 @@ function postTitleInput( i ){ // i : 매개변수 , 상세 출력할 배열의
         console.log(postArray);
     
         return postArray;
+    }
+
+    function iFunc(){
+        let iList = localStorage.getItem('postArray')
+        if( iList == null ){
+            iList = [];
+        }else{
+            iList = JSON.parse( iList );
+        }
+        console.log(index);
+    
+        return iList;
     }
