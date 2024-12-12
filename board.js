@@ -6,8 +6,8 @@
 postListFunc();
 function postListFunc(){  console.log('등록함수 실행')
 
-    let postArray = retrunFunc();
-    let iList = iFunc();
+    let postArray = returnFunc();
+    
     // (1) 어디에 , table > tbody , document.querySelector(선택자)
     let tbody = document.querySelector( 'table > tbody' )
     // (2) 무엇읏 , 배열 요소들의 정보를 html 구성해서
@@ -17,23 +17,29 @@ function postListFunc(){  console.log('등록함수 실행')
         let board = postArray[i]; // 하나의 게시물
         // 하나의 게시물을 csv 구성 했기 때문에 게시물 정보 분해 
         // 문자열.split('기준문자') : 문자열내 기준문자로 분해해서 분해
+        
+        
         let info = board.split(',') // csv 형식은 ,(쉼표)
         html += `<tr>
                     <td>${ info[3] }</td>
                     <td><a href="view.html" onclick="postTitleInput(${i})">${ info[0] }<a></td>
                     <td>${ info[4] }</td>
                 </tr>`
-        iList = i ;
-        localStorage.setItem( 'iList' , JSON.stringify( iList ));
-        console.log( i )
     } // for end
-
+            
 
     // (3) 출력 , .innerHTML
     tbody.innerHTML = html;
 } // f end
 
-function retrunFunc(){
+function postTitleInput( i ){
+    let index = iFunc();
+    index = i ;
+    console.log( i )
+    localStorage.setItem( 'index' , index );
+}
+
+function returnFunc(){
     let postArray = localStorage.getItem('postArray')
     if( postArray == null ){
         postArray = [];
@@ -46,13 +52,10 @@ function retrunFunc(){
 }
 
 function iFunc(){
-    let iList = localStorage.getItem('postArray')
-    if( iList == null ){
-        iList = '';
-    }else{
-        iList = JSON.parse( iList );
-    }
-    console.log(iList);
+    let index = localStorage.getItem('index')
+    index = JSON.parse( index );
 
-    return iList;
+    console.log(index);
+
+    return index;
 }
