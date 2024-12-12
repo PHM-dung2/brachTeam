@@ -44,11 +44,8 @@ function postDeleteFunc( i ){
     if( input == info[2]){ postArray.splice( i , 1 ) };
     localStorage.setItem( 'postArray' , JSON.stringify(postArray));
     // 2. 화면 새로고침 / 다시 출력 / 다시ㅣ 함수 호출
-    document.querySelector('.tilteBox').innerHTML = '';
-    document.querySelector('.contentBox').innerHTML = '';
-    document.querySelector('.dayBox').innerHTML = '';
-    document.querySelector('.viewBox').innerHTML = '';
-} // f end
+    location.href="board.html"  //location.replace(), location.href 페이지 이동함수 // window.open() 새창으로 띄움
+} // f end  
 
 // [5] 수정함수 , 실행조건 : [수정]버튼 클릭시
 function postEditFunc( i ){ console.log('등록함수 실행')
