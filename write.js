@@ -1,11 +1,13 @@
-let postArray = ["게시물1 제목 , 게시물1 내용 , 1234 , 2024-11-25 , 3",
-                "게시물2 제목 , 게시물2 내용 , 5678 , 2024-11-26 , 2",
-                "게시물3 제목 , 게시물3 내용 , 1478 , 2024-11-27 , 0"];
+// let postArray = ["게시물1 제목 , 게시물1 내용 , 1234 , 2024-11-25 , 3",
+//                 "게시물2 제목 , 게시물2 내용 , 5678 , 2024-11-26 , 2",
+//                 "게시물3 제목 , 게시물3 내용 , 1478 , 2024-11-27 , 0"];
 // let arr = postArray.split(",");
 
 // [2] 등록함수 , 실행조건 : [등록]버튼 클릭시
 function postWriteFunc(){   //console.log('등록함수 실행')    // 키워드명 겹칠때 오류 조심(변수명 이름 바꿔보기)
     
+    let postArray = retrunFunc();
+
     // 1. 입력/저장 , document.querySelector('선택자').value
     let title = document.querySelector('.postTitle').value;
     let content = document.querySelector('.postContent').value;
@@ -30,6 +32,9 @@ function postWriteFunc(){   //console.log('등록함수 실행')    // 키워드
     console.log(postArray);
     // 3. 출력 , 출력함수 실행
     postArray.push( board );
+
+    localStorage.setItem( 'postArray' , JSON.stringify(postArray) );
+
 } // f end
 
 function retrunFunc(){
