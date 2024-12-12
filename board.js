@@ -28,7 +28,7 @@ function postListFunc(){  console.log('등록함수 실행')
     } // for end
 
     iList.push(i);
-    localStorage.iList( 'iList' , JSON.stringify( iList ))
+    localStorage.setItem( 'iList' , JSON.stringify( iList ));
 
     // (3) 출력 , .innerHTML
     tbody.innerHTML = html;
