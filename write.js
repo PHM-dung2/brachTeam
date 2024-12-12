@@ -31,3 +31,15 @@ function postWriteFunc(){   //console.log('등록함수 실행')    // 키워드
     // 3. 출력 , 출력함수 실행
     postArray.push( board );
 } // f end
+
+function retrunFunc(){
+    let postArray = localStorage.getItem('postArray')
+    if( postArray == null ){
+        postArray = [];
+    }else{
+        postArray = JSON.parse( postArray );
+    }
+    console.log(postArray);
+
+    return postArray;
+}
